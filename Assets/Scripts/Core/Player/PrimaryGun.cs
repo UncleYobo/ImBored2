@@ -8,7 +8,7 @@ public class PrimaryGun : MonoBehaviour
     [SerializeField] private float _fireRate;
     [SerializeField] private GameObject _bulletPrefab;
 
-    [SerializeField] private List<Bullet> _cachedBullets;
+    private List<Bullet> _cachedBullets = new List<Bullet>();
 
     private bool _isFiring;
     private float _fireTimer;
