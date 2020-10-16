@@ -18,7 +18,7 @@ public class PlayerXP : MonoBehaviour
 
     void SetNextThreshold()
     {
-        _nextThreshold = _baseThreshold + (_baseThreshold * (_baseThreshold * _modifier));
+        _nextThreshold = _baseThreshold + (_baseThreshold * _modifier);
     }
 
     void LevelUp()

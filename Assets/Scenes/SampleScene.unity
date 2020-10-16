@@ -639,7 +639,6 @@ MonoBehaviour:
   _fireRate: 1
   _bulletPrefab: {fileID: 7276955474538769202, guid: 79fd4f3272a8699468145a589bbb0c0c,
     type: 3}
-  _cachedBullets: []
 --- !u!1 &1545762358
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 10
   _defenseRating: 0.1
-  _xpWorth: 0
+  _xpWorth: 5
   _deathObject: {fileID: 0}
 --- !u!4 &1869465782 stripped
 Transform:
