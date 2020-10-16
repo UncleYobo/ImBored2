@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player");
+        _currentHealth = _maxHealth;
     }
 
     void Death()
