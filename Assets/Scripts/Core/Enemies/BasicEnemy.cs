@@ -2,35 +2,55 @@
 
 public class BasicEnemy : MonoBehaviour
 {
+    public bool IsDirty
+    {
+        get { return _isDirty; }
+        set
+        {
+            _isDirty = value;
+            if (IsDirty)
+            {
+                transform.position = _poolingPosition;
+            }
+        }
+    }
+
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _wanderDistance;
 
     private bool _isReadyForNextDestination;
     private Vector3 _destination;
     private float _distance;
+    private bool _isDirty;
+    private Vector3 _poolingPosition = new Vector3(0f, -2f, 0f);
 
     private void Start()
     {
         _isReadyForNextDestination = true;
         SetHeight();
+        IsDirty = false;
     }
 
     private void LateUpdate()
     {
-        if (_isReadyForNextDestination)
+        if (!IsDirty)
         {
-            ChooseNextDestination();
-            _isReadyForNextDestination = false;
-        } else
-        {
-            _distance = Vector3.Distance(transform.position, _destination);
-            if(_distance <= 0.1f)
+            if (_isReadyForNextDestination)
             {
-                _isReadyForNextDestination = true;
+                ChooseNextDestination();
+                _isReadyForNextDestination = false;
             }
-        }
+            else
+            {
+                _distance = Vector3.Distance(transform.position, _destination);
+                if (_distance <= 0.1f)
+                {
+                    _isReadyForNextDestination = true;
+                }
+            }
 
-        Move();
+            Move();
+        }
     }
 
     void SetHeight()
@@ -52,5 +72,20 @@ public class BasicEnemy : MonoBehaviour
     void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, _destination, Time.deltaTime * _moveSpeed);
+    }
+
+    public void MarkDirty()
+    {
+        IsDirty = true;
+    }
+
+    public void Respawn()
+    {
+        float randomX = Random.Range(-_wanderDistance / 2f, _wanderDistance / 2f);
+        float randomZ = Random.Range(-_wanderDistance / 2f, _wanderDistance / 2f);
+        Vector3 spawnPosition = new Vector3(randomX, -1f, randomZ);
+        transform.position = spawnPosition;
+        SetHeight();
+        IsDirty = false;
     }
 }

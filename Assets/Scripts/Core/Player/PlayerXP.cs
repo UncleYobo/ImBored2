@@ -3,6 +3,7 @@
 public class PlayerXP : MonoBehaviour
 {
     public int SkillPoints;
+    public int Level;
 
     [SerializeField] private float _baseThreshold;
     [SerializeField] private float _modifier;
@@ -25,6 +26,7 @@ public class PlayerXP : MonoBehaviour
     {
         _currentXP -= _nextThreshold;
         SkillPoints++;
+        Level++;
         SetNextThreshold();
     }
     
