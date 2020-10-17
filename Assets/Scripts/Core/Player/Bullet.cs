@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public bool IsDirty { get { return _isDirty; } set { _isDirty = value; } }
+    public float RangeModifier { get { return _rangeModifier; } set { _rangeModifier = value; } }
 
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _maxRange;
@@ -15,6 +16,7 @@ public class Bullet : MonoBehaviour
     private bool _isDirty;
     private Vector3 _poolingLocation = new Vector3(0f, -2f, 0f);
     private Rigidbody _rigidBody;
+    private float _rangeModifier = 0f;
 
     void Start()
     {
@@ -30,7 +32,7 @@ public class Bullet : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * _shotSpeed);
 
             _rangeTravelled = Vector3.Distance(_startPoint, transform.position);
-            if (_rangeTravelled >= _maxRange)
+            if (_rangeTravelled >= (_maxRange + RangeModifier))
             {
                 MarkDirty();
             }
