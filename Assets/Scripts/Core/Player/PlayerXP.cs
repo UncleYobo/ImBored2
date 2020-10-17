@@ -15,8 +15,8 @@ public class PlayerXP : MonoBehaviour
     void Start()
     {
         _currentXP = 0f;
-        SetNextThreshold();
         _playerManager = GetComponent<PlayerManager>();
+        SetNextThreshold();
     }
 
     void SetNextThreshold()

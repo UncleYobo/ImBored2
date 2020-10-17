@@ -29,6 +29,11 @@ public class PlayerManager : MonoBehaviour
     }
     public void NextWave(float minimumXP)
     {
+        int enemiesNeededPerSpawner = ((int)minimumXP / _enemySpawners.Count) / 5;
+        foreach (EnemySpawner spawner in _enemySpawners)
+        {
+            spawner.StartSpawning(enemiesNeededPerSpawner);
+        }
 
     }
 

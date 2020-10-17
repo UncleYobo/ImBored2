@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject _basicEnemy;
     [SerializeField] private List<GameObject> _specialEnemies;
 
-    private List<BasicEnemy> _pooledBasicEnemies;
+    private List<BasicEnemy> _pooledBasicEnemies = new List<BasicEnemy>();
     private List<GameObject> _pooledSpecialEnemies;
 
     private float _specialChance = 0.1f;
@@ -57,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
         void SpawnBasicEnemy()
         {
             bool foundEnemy = false;
+
             foreach(BasicEnemy enemy in _pooledBasicEnemies)
             {
                 if (enemy.IsDirty)
