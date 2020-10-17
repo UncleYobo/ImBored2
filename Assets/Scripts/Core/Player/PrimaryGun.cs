@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrimaryGun : MonoBehaviour
 {
     public float FireRateModifier { get { return _fireRateModifier; } set { _fireRateModifier = value; } }
+    public bool CanFire { get { return _canFire; } set { _canFire = value; } }
     public float BulletRange {
         get { return _bulletRange; }
         set
@@ -29,6 +30,7 @@ public class PrimaryGun : MonoBehaviour
     private float _bulletRange = 50f;
 
     private int _fireIndex;
+    private bool _canFire;
 
     void Start()
     {
@@ -38,10 +40,10 @@ public class PrimaryGun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanFire)
         {
             _isFiring = true;
-        } else if (Input.GetKeyUp(KeyCode.Mouse0))
+        } else if (Input.GetKeyUp(KeyCode.Mouse0) && CanFire)
         {
             _isFiring = false;
         }
