@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -615,7 +615,7 @@ MonoBehaviour:
   _gunObjects:
   - {fileID: 1983390562}
   - {fileID: 2071471757}
-  _fireRate: 1
+  _fireRate: 0.1
   _bulletPrefab: {fileID: 7276955474538769202, guid: 79fd4f3272a8699468145a589bbb0c0c,
     type: 3}
 --- !u!1 &1545762358
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 1550776064}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,7 +752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550776063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.523056, y: 10.168512, z: -20.482552}
+  m_LocalPosition: {x: 0, y: 10.168512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
