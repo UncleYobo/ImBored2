@@ -11,6 +11,7 @@ public class BasicEnemy : MonoBehaviour
             if (IsDirty)
             {
                 transform.position = _poolingPosition;
+                transform.localScale = _poolingScale;
             }
         }
     }
@@ -23,9 +24,11 @@ public class BasicEnemy : MonoBehaviour
     private float _distance;
     private bool _isDirty;
     private Vector3 _poolingPosition = new Vector3(0f, -2f, 0f);
+    private Vector3 _poolingScale = new Vector3(0.1f, 0.1f, 0.1f);
 
     private void Start()
     {
+        transform.localScale = _poolingScale;
         _isReadyForNextDestination = true;
         SetHeight();
         IsDirty = false;
@@ -35,6 +38,11 @@ public class BasicEnemy : MonoBehaviour
     {
         if (!IsDirty)
         {
+            if(transform.localScale != Vector3.one)
+            {
+                transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one, Time.deltaTime);
+            }
+            
             if (_isReadyForNextDestination)
             {
                 ChooseNextDestination();
@@ -55,7 +63,7 @@ public class BasicEnemy : MonoBehaviour
 
     void SetHeight()
     {
-        float flightHeight = Random.Range(3.5f, 7.0f);
+        float flightHeight = Random.Range(10.0f, 15.0f);
         Vector3 pos = transform.position;
         pos.y = flightHeight;
         transform.position = pos;
@@ -81,10 +89,6 @@ public class BasicEnemy : MonoBehaviour
 
     public void Respawn()
     {
-        float randomX = Random.Range(-_wanderDistance / 2f, _wanderDistance / 2f);
-        float randomZ = Random.Range(-_wanderDistance / 2f, _wanderDistance / 2f);
-        Vector3 spawnPosition = new Vector3(randomX, -1f, randomZ);
-        transform.position = spawnPosition;
         SetHeight();
         IsDirty = false;
     }
