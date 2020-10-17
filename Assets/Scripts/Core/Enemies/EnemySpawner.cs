@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public int SpawnCount { get { return _spawnCount; } set { _spawnCount = value; } }
+
     [SerializeField] private GameObject _basicEnemy;
     [SerializeField] private List<GameObject> _specialEnemies;
 
@@ -14,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private float _spawnRate = 0.1f;
     private float _spawnTimer = 0f;
     private bool _isSpawning = true;
+    private int _spawnCount;
 
     private void Update()
     {
@@ -23,21 +26,33 @@ public class EnemySpawner : MonoBehaviour
             if(_spawnTimer >= _spawnRate)
             {
                 SpawnEnemy();
+                SpawnCount--;
+                if(SpawnCount <= 0)
+                {
+                    _isSpawning = false;
+                }
             }
         }
     }
 
     void SpawnEnemy()
     {
-        float diceRoll = Random.Range(0.0f, 1.0f);
-        if(diceRoll > _specialChance)
+        if(_specialEnemies.Count > 0)
+        {
+            float diceRoll = Random.Range(0.0f, 1.0f);
+            if (diceRoll > _specialChance)
+            {
+                SpawnBasicEnemy();
+            }
+            else
+            {
+                SpawnSpecialEnemy();
+            }
+        } else
         {
             SpawnBasicEnemy();
         }
-        else
-        {
-            SpawnSpecialEnemy();
-        }
+        
 
         void SpawnBasicEnemy()
         {
@@ -62,5 +77,11 @@ public class EnemySpawner : MonoBehaviour
         {
            
         }
+    }
+
+    public void StartSpawning(int spawnCount)
+    {
+        SpawnCount = spawnCount;
+        _isSpawning = true;
     }
 }

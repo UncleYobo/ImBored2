@@ -10,16 +10,19 @@ public class PlayerXP : MonoBehaviour
 
     private float _currentXP;
     private float _nextThreshold;
+    private PlayerManager _playerManager;
 
     void Start()
     {
         _currentXP = 0f;
         SetNextThreshold();
+        _playerManager = GetComponent<PlayerManager>();
     }
 
     void SetNextThreshold()
     {
         _nextThreshold = _baseThreshold + (_baseThreshold * _modifier);
+        _playerManager.NextWave(_nextThreshold);
     }
 
     void LevelUp()
