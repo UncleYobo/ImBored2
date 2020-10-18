@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerXP _playerXP;
     private List<EnemySpawner> _enemySpawners = new List<EnemySpawner>();
     private bool _isMenuOpen;
+    private float _tempTurnSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -36,18 +37,35 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _isMenuOpen = !_isMenuOpen;
-            _gameMenu.SetActive(_isMenuOpen);
-            _camera.enabled = !_isMenuOpen;
-            _primaryGun.CanFire = !_isMenuOpen;
+
             if (_isMenuOpen)
             {
                 Cursor.lockState = CursorLockMode.None;
+                StorePlayerTurnSpeed();
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                UpdatePlayerTurnSpeed();
             }
+
+            
+            _gameMenu.SetActive(_isMenuOpen);
+            _primaryGun.CanFire = !_isMenuOpen;
+            
         }
+    }
+
+    void StorePlayerTurnSpeed()
+    {
+        _tempTurnSpeed = _camera.m_TurnSmoothing;
+        _camera.enabled = false;
+    }
+
+    void UpdatePlayerTurnSpeed()
+    {
+        _camera.enabled = true;
+        _camera.m_TurnSmoothing = _tempTurnSpeed;
     }
 
     public void IncreaseFireSpeed(float amt)
@@ -59,20 +77,20 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
-    public void IncreaseRange(float amt)
+    public void IncreaseBallistics(float amt)
     {
-        if (_playerXP.SkillPoints > 0)
+        if(_playerXP.SkillPoints > 0)
         {
+            _primaryGun.ShotSpeedModifier += amt;
             _primaryGun.BulletRange += amt;
             _playerXP.SkillPoints--;
         }
-        
     }
     public void IncreaseMoveSpeed(float amt)
     {
         if (_playerXP.SkillPoints > 0)
         {
-            _camera.m_TurnSmoothing += amt;
+            _tempTurnSpeed += amt;
             _playerXP.SkillPoints--;
         }
         

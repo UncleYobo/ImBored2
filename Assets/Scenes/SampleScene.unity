@@ -825,13 +825,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272400072}
-        m_MethodName: IncreaseRange
+        m_MethodName: IncreaseBallistics
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   _gunObjects:
   - {fileID: 1983390562}
   - {fileID: 2071471757}
-  _fireRate: 0.1
+  _fireRate: 1
   _bulletPrefab: {fileID: 7276955474538769202, guid: 79fd4f3272a8699468145a589bbb0c0c,
     type: 3}
 --- !u!1 &1441366410
@@ -1879,7 +1879,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 0.01
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -2461,7 +2461,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 0.1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

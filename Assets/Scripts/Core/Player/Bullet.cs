@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public bool IsDirty { get { return _isDirty; } set { _isDirty = value; } }
     public float RangeModifier { get { return _rangeModifier; } set { _rangeModifier = value; } }
+    public float ShotSpeedModifier { get { return _shotSpeedModifier; } set { _shotSpeedModifier = value; } }
 
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _maxRange;
@@ -17,6 +18,7 @@ public class Bullet : MonoBehaviour
     private Vector3 _poolingLocation = new Vector3(0f, -2f, 0f);
     private Rigidbody _rigidBody;
     private float _rangeModifier = 0f;
+    private float _shotSpeedModifier = 0f;
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class Bullet : MonoBehaviour
     {
         if (!IsDirty)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * _shotSpeed);
+            transform.Translate(Vector3.forward * Time.deltaTime * (_shotSpeed + ShotSpeedModifier));
 
             _rangeTravelled = Vector3.Distance(_startPoint, transform.position);
             if (_rangeTravelled >= (_maxRange + RangeModifier))

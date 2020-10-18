@@ -13,7 +13,19 @@ public class PrimaryGun : MonoBehaviour
             _bulletRange = value;
             foreach (Bullet bullet in _cachedBullets)
             {
-                bullet.RangeModifier = BulletRange;
+                bullet.RangeModifier = value;
+            }
+        }
+    }
+    public float ShotSpeedModifier
+    {
+        get { return _shotSpeedModifier; }
+        set
+        {
+            _shotSpeedModifier = value;
+            foreach(Bullet bullet in _cachedBullets)
+            {
+                bullet.ShotSpeedModifier = value;
             }
         }
     }
@@ -27,6 +39,7 @@ public class PrimaryGun : MonoBehaviour
     private bool _isFiring;
     private float _fireTimer;
     private float _fireRateModifier = 0f;
+    private float _shotSpeedModifier = 0f;
     private float _bulletRange = 50f;
 
     private int _fireIndex;
@@ -106,6 +119,7 @@ public class PrimaryGun : MonoBehaviour
                 Bullet bullet = newBullet.GetComponent<Bullet>();
                 _cachedBullets.Add(bullet);
                 bullet.RangeModifier = BulletRange;
+                bullet.ShotSpeedModifier = ShotSpeedModifier;
             }
         }
     }
