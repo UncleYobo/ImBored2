@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{5DEA19A1-5728-05BF-11B4-D08DA9913231}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Core/Player/PlayerManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Core/Enemies/EnemySpawner.cs" Line="32" Column="41" />
+      <File FileName="Assets/Scripts/Core/Player/PlayerXP.cs" />
+      <File FileName="Assets/Scripts/Core/Enemies/Health.cs" />
+      <File FileName="Assets/Scripts/Core/Enemies/BasicEnemy.cs" />
+      <File FileName="Assets/Scripts/Core/Player/PlayerManager.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/Core/Player/PrimaryGun.cs" />
+      <File FileName="Assets/Scripts/Core/Player/Bullet.cs" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="859a9a71-0c5a-4b2f-a1b9-ed60a471c59d" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

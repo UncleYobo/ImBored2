@@ -14,16 +14,19 @@ public class Health : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player");
+        _currentHealth = _maxHealth;
     }
 
     void Death()
     {
+        GetComponent<BasicEnemy>().IsDirty = true;
+        _currentHealth = _maxHealth;
         _player.GetComponent<PlayerXP>().ApplyXP(_xpWorth);
         if (_deathObject)
         {
             Instantiate(_deathObject, transform.position, transform.rotation);
         }
-        Destroy(this.gameObject);
+        
     }
 
     public void ApplyDamage(float dmg)
