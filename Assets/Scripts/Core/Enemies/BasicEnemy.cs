@@ -15,9 +15,11 @@ public class BasicEnemy : MonoBehaviour
             }
         }
     }
+    public enum MovementType { Basic, Darting }
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _wanderDistance;
+    [SerializeField] private MovementType _movementType;
 
     private bool _isReadyForNextDestination;
     private Vector3 _destination;
@@ -79,7 +81,14 @@ public class BasicEnemy : MonoBehaviour
 
     void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _destination, Time.deltaTime * _moveSpeed);
+        if(_movementType == MovementType.Basic)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _destination, Time.deltaTime * _moveSpeed);
+        } else if(_movementType == MovementType.Darting)
+        {
+            transform.position = Vector3.Lerp(transform.position, _destination, Time.deltaTime * _moveSpeed);
+        }
+        
     }
 
     public void MarkDirty()
