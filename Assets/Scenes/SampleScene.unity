@@ -1265,7 +1265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _basicEnemy: {fileID: 7012814177427036813, guid: 24be66f0cb8804485988fc0eb58359c1,
     type: 3}
-  _specialEnemies: []
+  _specialEnemies:
+  - {fileID: 7817406892263948483, guid: 9de21a98c12e2b44581c027d25644047, type: 3}
 --- !u!4 &1550776065
 Transform:
   m_ObjectHideFlags: 0
